@@ -2,7 +2,7 @@ import React from 'react';
 import SelectInput from './common/SelectInput';
 import SaveButton from './common/SaveButton';
 
-const NewOrderForm = ({users, onSave, onChange, errors}) => {
+const NewOrderForm = ({users, order, onSave, onChange, errors}) => {
     return (
         <form className="form-inline vertical-padded" role="form">
             <SelectInput 
@@ -17,6 +17,7 @@ const NewOrderForm = ({users, onSave, onChange, errors}) => {
                     name="quantity"
                     className="form-control" 
                     type="number"
+                    value={order.quantity}
                     onChange={onChange} />
             </div>
             <div className="form-group">
@@ -25,6 +26,7 @@ const NewOrderForm = ({users, onSave, onChange, errors}) => {
                     name="price" 
                     className="form-control" 
                     type="number"
+                    value={order.price}
                     onChange={onChange} />
             </div>
             <div className="form-group">

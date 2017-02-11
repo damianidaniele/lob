@@ -39,6 +39,8 @@ class DashboardManager extends React.Component {
         }
 
         this.props.actions.saveOrder(this.state.order);
+        order = {userId: '', quantity: 0, price: 0, action: ''};
+        this.setState({order: order});
     }
 
     onChange(event) {
@@ -59,6 +61,7 @@ class DashboardManager extends React.Component {
                 <h4>New order</h4>
                 <NewOrderForm 
                     users={this.state.users}
+                    order={this.state.order}
                     errors={this.state.errors}
                     onChange={this.onChange}
                     onSave={this.saveOrder}></NewOrderForm>
