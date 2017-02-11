@@ -1,19 +1,15 @@
 import React from 'react';
+import SelectInput from './common/SelectInput';
 
-const NewOrderForm = () => {
+const NewOrderForm = ({users, onSave, onChange, errors}) => {
     return (
         <form className="form-inline vertical-padded" role="form">
-            <div className="form-group">
-                <label htmlFor="selectUserId" className="control-label">
-                User Id
-                </label>
-                <select id="selectUserId" className="form-control">
-                <option>user1</option>
-                <option>user2</option>
-                <option>user3</option>
-                <option>user4</option>
-                </select>
-            </div>
+            <SelectInput 
+                name="userId"
+                label="UserId"
+                defaultOption=""
+                options={users}
+                onChange={onChange}/>
             <div className="form-group">
                 <label htmlFor="inputQuantity" className="control-label">
                 Quantity

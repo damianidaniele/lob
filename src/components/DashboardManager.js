@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
+import {mapArrayToObject} from '../utils/utils';
 
 import NewOrderForm from './NewOrderForm';
 import ActiveOrders from './ActiveOrders';
@@ -9,17 +10,30 @@ class DashboardManager extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        // this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
+        this.state = {
+            users: mapArrayToObject(this.props.users),
+            errors: {}
+        };
+    }
+
+    onSave() {
+        console.log('saving....');
+    }
+
+    onChange() {
+        console.log('changing');
     }
 
     render() {
-        const users = this.props;
-        
         return (
             <div className="col-xs-12">
                 <h1 className="text-center">Live Order Board</h1>
                 <h4>New order</h4>
-                <NewOrderForm users={users}></NewOrderForm>
+                <NewOrderForm 
+                    users={this.state.users}
+                    errors={this.state.errors}
+                    onChange={this.onChange}
+                    onSave={this.saveCourse}></NewOrderForm>
 
                 <h4>Active orders</h4>
                 <ActiveOrders></ActiveOrders>
