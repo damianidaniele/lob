@@ -12,8 +12,11 @@ class DashboardManager extends React.Component {
 
         this.state = {
             users: mapArrayToObject(this.props.users),
+            orders: this.props.orders,
             errors: {}
         };
+
+        console.log('this state', this.state);
     }
 
     onSave() {
@@ -22,6 +25,10 @@ class DashboardManager extends React.Component {
 
     onChange() {
         console.log('changing');
+    }
+
+    deleteOrder(event) {
+        console.log('onclick');
     }
 
     render() {
@@ -36,7 +43,7 @@ class DashboardManager extends React.Component {
                     onSave={this.saveCourse}></NewOrderForm>
 
                 <h4>Active orders</h4>
-                <ActiveOrders></ActiveOrders>
+                <ActiveOrders orders={this.state.orders} deleteOrder={this.deleteOrder} ></ActiveOrders>
 
                 <h4>Total Sell Orders</h4>
                 <OrderSummary></OrderSummary>
@@ -49,12 +56,14 @@ class DashboardManager extends React.Component {
 }
 
 DashboardManager.propTypes = {
-    users: PropTypes.array
+    users: PropTypes.array,
+    orders: PropTypes.array
 };
 
 function mapStateToProps(state, ownProps) {
     return {
-        users: state.users
+        users: state.users,
+        orders: state.orders
     };
 }
 
