@@ -15,25 +15,40 @@ class DashboardManager extends React.Component {
 
         this.state = {
             users: mapArrayToObject(this.props.users),
-            orders: this.props.orders,
+            order: {userId: '', quantity: 0, price: 0, action: ''},
             errors: {}
         };
 
+        this.onChange = this.onChange.bind(this);
         this.deleteOrder = this.deleteOrder.bind(this);
-
-        console.log('this state', this.state);
+        this.saveOrder = this.saveOrder.bind(this);
     }
 
-    onSave() {
-        console.log('saving....');
+    orderFormIsValid() {
+        return true;
     }
 
-    onChange() {
-        console.log('changing');
+    saveOrder(event, orderAction) {
+        event.preventDefault();
+        let order = this.state.order;
+        order.action = orderAction.toLowerCase();
+        order.id = this.props.nextOrderId;
+        this.setState({order: order});
+        if (!this.orderFormIsValid()) {
+            return;
+        }
+
+        this.props.actions.saveOrder(this.state.order);
+    }
+
+    onChange(event) {
+        const field = event.target.name;
+        let order = this.state.order;
+        order[field] = event.target.value;
+        return this.setState({order: order});
     }
 
     deleteOrder(event, orderId) {
-        console.log('delete', event, orderId);
         this.props.actions.deleteOrder(orderId);
     }
 
@@ -46,7 +61,7 @@ class DashboardManager extends React.Component {
                     users={this.state.users}
                     errors={this.state.errors}
                     onChange={this.onChange}
-                    onSave={this.saveCourse}></NewOrderForm>
+                    onSave={this.saveOrder}></NewOrderForm>
 
                 <h4>Active orders</h4>
                 <ActiveOrders orders={this.props.orders} deleteOrder={this.deleteOrder} ></ActiveOrders>
@@ -62,14 +77,17 @@ class DashboardManager extends React.Component {
 }
 
 DashboardManager.propTypes = {
+    actions: PropTypes.object.isRequired,
     users: PropTypes.array,
-    orders: PropTypes.array
+    orders: PropTypes.array,
+    nextOrderId: PropTypes.number
 };
 
 function mapStateToProps(state, ownProps) {
     return {
         users: state.users,
-        orders: state.orders
+        orders: state.orders,
+        nextOrderId: state.nextOrderId
     };
 }
 

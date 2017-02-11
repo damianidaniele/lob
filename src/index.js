@@ -10,8 +10,8 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 
 require('./favicon.ico');
-import './styles/styles.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './styles/styles.scss';
 
 const store = configureStore();
 

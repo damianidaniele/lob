@@ -8,3 +8,12 @@ export function deleteOrder(orderId) {
         });
     }
 }
+
+export function saveOrder(order) {
+    return function(dispatch) {
+        return dispatch({
+            type: types.CREATE_ORDER,
+            order
+        });
+    }
+}
