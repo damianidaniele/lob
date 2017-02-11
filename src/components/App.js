@@ -7,13 +7,7 @@ import { Link, IndexLink } from 'react-router';
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <IndexLink to="/">Home</IndexLink>
-        {' | '}
-        <Link to="/fuel-savings">Demo App</Link>
-        {' | '}
-        <Link to="/about">About</Link>
-        <br/>
+      <div className="row vertical-padded">    
         {this.props.children}
       </div>
     );
