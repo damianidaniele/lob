@@ -1,6 +1,10 @@
 import React from 'react';
 
 const ActiveOrderRow = ({order, onClick}) => {
+    const deleteOrder = (event) => {
+        onClick(event, order.id);
+    };
+    
     return (
         <tr>
             <td>{order.id}</td>
@@ -8,7 +12,7 @@ const ActiveOrderRow = ({order, onClick}) => {
             <td>{order.quantity}</td>
             <td>{order.price}</td>
             <td>{order.action}</td>
-            <td><a href="#" onClick={onClick}><i className="glyphicon glyphicon-remove"></i></a></td>
+            <td><a href="#" onClick={deleteOrder}><i className="glyphicon glyphicon-remove"></i></a></td>
         </tr>
     );
 };

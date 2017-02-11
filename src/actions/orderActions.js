@@ -1,9 +1,10 @@
 import * as types from '../constants/actionTypes';
 
-export function getUsers() {
+export function deleteOrder(orderId) {
     return function(dispatch) {
         return dispatch({
-            type: types.GET_USERS
+            type: types.DELETE_ORDER,
+            orderId
         });
     }
 }

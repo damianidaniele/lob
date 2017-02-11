@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as orderActions from '../actions/orderActions';
+
 import {mapArrayToObject} from '../utils/utils';
 
 import NewOrderForm from './NewOrderForm';
@@ -16,6 +19,8 @@ class DashboardManager extends React.Component {
             errors: {}
         };
 
+        this.deleteOrder = this.deleteOrder.bind(this);
+
         console.log('this state', this.state);
     }
 
@@ -27,8 +32,9 @@ class DashboardManager extends React.Component {
         console.log('changing');
     }
 
-    deleteOrder(event) {
-        console.log('onclick');
+    deleteOrder(event, orderId) {
+        console.log('delete', event, orderId);
+        this.props.actions.deleteOrder(orderId);
     }
 
     render() {
@@ -43,7 +49,7 @@ class DashboardManager extends React.Component {
                     onSave={this.saveCourse}></NewOrderForm>
 
                 <h4>Active orders</h4>
-                <ActiveOrders orders={this.state.orders} deleteOrder={this.deleteOrder} ></ActiveOrders>
+                <ActiveOrders orders={this.props.orders} deleteOrder={this.deleteOrder} ></ActiveOrders>
 
                 <h4>Total Sell Orders</h4>
                 <OrderSummary></OrderSummary>
@@ -67,10 +73,10 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         // actions: bindActionCreators(courseActions, dispatch)
-//     };
-// }
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(orderActions, dispatch)
+    };
+}
 
-export default connect(mapStateToProps)(DashboardManager);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardManager);
