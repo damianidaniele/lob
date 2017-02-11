@@ -2,11 +2,11 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
-import HomePage from './components/HomePage';
+import DashboardManager from './components/DashboardManager';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={HomePage}/>
-    <Route path="*" component={HomePage}/>
+    <IndexRoute component={DashboardManager}/>
+    <Route path="*" component={DashboardManager}/>
   </Route>
 );

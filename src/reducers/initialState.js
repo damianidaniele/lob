@@ -5,5 +5,6 @@ export default {
     'user3',
     'user4',
     'user5'
-  ]
+  ],
+  orders: []
 };

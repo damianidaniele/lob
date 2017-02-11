@@ -7,7 +7,6 @@ import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import routes from './routes';
-import {getUsers} from './actions/orderActions';
 import configureStore from './store/configureStore';
 
 require('./favicon.ico');
@@ -15,7 +14,6 @@ import './styles/styles.scss';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore();
-store.dispatch(getUsers());
 
 render(
   <Provider store={store}>
