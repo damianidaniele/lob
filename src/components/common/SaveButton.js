@@ -8,7 +8,7 @@ const SaveButton = ({save, value}) => {
 
     return (
         <button type="submit" 
-                className={"btn btn-primary " + value} 
+                className={"btn btn-" + (value === 'Buy' ? 'primary' : 'success')} 
                 onClick={doSave}
                 value={value} >{value}</button>
     );
