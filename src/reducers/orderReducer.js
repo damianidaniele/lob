@@ -11,7 +11,6 @@ export default function orderReducer(state = initialState.orders, action) {
       });
     
     case types.CREATE_ORDER:
-      console.log('order', action.order);
       return [...state, action.order];
 
     default:

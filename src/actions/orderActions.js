@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+import {incrementOrderId} from './orderIdActions';
 
 export function deleteOrder(orderId) {
     return function(dispatch) {
@@ -11,6 +12,7 @@ export function deleteOrder(orderId) {
 
 export function saveOrder(order) {
     return function(dispatch) {
+        dispatch(incrementOrderId());
         return dispatch({
             type: types.CREATE_ORDER,
             order

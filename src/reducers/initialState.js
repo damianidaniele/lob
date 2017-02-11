@@ -6,6 +6,7 @@ export default {
     'user4',
     'user5'
   ],
+  nextOrderId: 5,
   orders: [
     {id: 1, userId: 'user1', quantity: 50, price: 300, action: 'buy'},
     {id: 2, userId: 'user2', quantity: 20, price: 340, action: 'buy'},
