@@ -5,7 +5,7 @@ import * as orderActions from '../actions/orderActions';
 
 import {mapArrayToObject} from '../utils/utils';
 
-import NewOrderForm from './NewOrderForm';
+import NewOrderForm from './orderForm/NewOrderForm';
 import ActiveOrders from './activeorders/ActiveOrders';
 import OrderSummary from './OrderSummary';
 
@@ -37,7 +37,6 @@ class DashboardManager extends React.Component {
         if (!this.orderFormIsValid()) {
             return;
         }
-
         this.props.actions.saveOrder(this.state.order);
         order = {userId: '', quantity: 0, price: 0, action: ''};
         this.setState({order: order});
@@ -58,13 +57,12 @@ class DashboardManager extends React.Component {
         return (
             <div className="col-xs-12">
                 <h1 className="text-center">Live Order Board</h1>
-                <h4>New order</h4>
                 <NewOrderForm 
                     users={this.state.users}
                     order={this.state.order}
                     errors={this.state.errors}
                     onChange={this.onChange}
-                    onSave={this.saveOrder}></NewOrderForm>
+                    onSave={this.saveOrder} />
 
                 <h4>Active orders</h4>
                 <ActiveOrders orders={this.props.orders} deleteOrder={this.deleteOrder} ></ActiveOrders>
