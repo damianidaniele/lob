@@ -7,7 +7,7 @@ export function deleteOrder(orderId) {
             type: types.DELETE_ORDER,
             orderId
         });
-    }
+    };
 }
 
 export function saveOrder(order) {
@@ -17,5 +17,5 @@ export function saveOrder(order) {
             type: types.CREATE_ORDER,
             order
         });
-    }
+    };
 }

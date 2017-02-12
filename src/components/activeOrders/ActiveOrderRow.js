@@ -12,7 +12,7 @@ const ActiveOrderRow = ({order, onClick}) => {
             <td>{order.quantity}</td>
             <td>{order.price}</td>
             <td>{order.action}</td>
-            <td><a href="#" onClick={deleteOrder}><i className="glyphicon glyphicon-remove"></i></a></td>
+            <td><a href="#" onClick={deleteOrder}><i className="glyphicon glyphicon-remove" /></a></td>
         </tr>
     );
 };

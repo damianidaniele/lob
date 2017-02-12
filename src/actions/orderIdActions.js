@@ -5,5 +5,5 @@ export function incrementOrderId() {
         return dispatch({
             type: types.INCREMENT_ORDER_ID
         });
-    }
+    };
 }

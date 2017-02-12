@@ -3,8 +3,8 @@ import {groupOrders} from '../../utils/utils';
 import OrderSummaryRow from './OrderSummaryRow';
 
 const OrderSummary = ({orders, filterBy}) => {
-    const getOrderType = () => {return filterBy.split(':')[0]};
-    const getOrderSort = () => {return filterBy.split(':')[1]}
+    const getOrderType = () => {return filterBy.split(':')[0]; };
+    const getOrderSort = () => {return filterBy.split(':')[1]; };
     
     const getFilteredOrders = () => {
       return groupOrders(orders, getOrderType(), getOrderSort());
@@ -23,12 +23,17 @@ const OrderSummary = ({orders, filterBy}) => {
         </thead>
         <tbody>
           {getFilteredOrders().map(order => {
-            return (<OrderSummaryRow key={order.price} order={order} />)
+            return (<OrderSummaryRow key={order.price} order={order} />);
           })}
         </tbody>
       </table>
     </div>
     );
+};
+
+OrderSummary.propTypes = {
+    orders: React.PropTypes.array.isRequired,
+    filterBy: React.PropTypes.string.isRequired
 };
 
 export default OrderSummary;

@@ -42,4 +42,12 @@ const NewOrderForm = ({users, order, onSave, onChange, errors}) => {
     );
 };
 
+NewOrderForm.propTypes = {
+    users: React.PropTypes.array.isRequired,
+    order: React.PropTypes.object,
+    onSave: React.PropTypes.func.isRequired,
+    onChange: React.PropTypes.func.isRequired,
+    errors: React.PropTypes.object
+};
+
 export default NewOrderForm;
