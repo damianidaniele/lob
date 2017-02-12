@@ -62,8 +62,8 @@ class DashboardManager extends React.Component {
 
     onChange(event) {
         const field = event.target.name;
-        let order = this.state.order;
-        order[field] = event.target.value;
+        let order = this.state.order;        
+        order[field] = event.target.type === 'number' ? parseFloat(event.target.value) : event.target.value;
         return this.setState({order: order});
     }
 
