@@ -16,9 +16,9 @@ const OrderSummary = ({orders, filterBy}) => {
         <table className="table table-striped table-bordered">
         <thead>
           <tr>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Orders</th>
+            <th className="text-center">Quantity</th>
+            <th className="text-center">Price</th>
+            <th className="text-center">Orders</th>
           </tr>
         </thead>
         <tbody>

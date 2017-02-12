@@ -8,12 +8,12 @@ const ActiveOrders = ({orders, deleteOrder}) => {
         <table className="table table-striped table-bordered">
           <thead>
             <tr>
-              <th>Order id</th>
-              <th>User</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Action</th>
-              <th>Cancel</th>
+              <th className="text-center">Order id</th>
+              <th className="text-center">User</th>
+              <th className="text-center">Quantity</th>
+              <th className="text-center">Price</th>
+              <th className="text-center">Action</th>
+              <th className="text-center">Cancel</th>
             </tr>
           </thead>
           <tbody>

@@ -7,12 +7,14 @@ const ActiveOrderRow = ({order, onClick}) => {
     
     return (
         <tr>
-            <td>{order.id}</td>
-            <td>{order.userId}</td>
-            <td>{order.quantity}</td>
-            <td>{order.price}</td>
-            <td>{order.action}</td>
-            <td><a href="#" onClick={deleteOrder}><i className="glyphicon glyphicon-remove" /></a></td>
+            <td className="text-center">{order.id}</td>
+            <td className="text-center">{order.userId}</td>
+            <td className="text-right">{order.quantity}KG</td>
+            <td className="text-right">£{order.price}</td>
+            <td className="text-center">{order.action}</td>
+            <td className="text-center">
+                <a href="#" onClick={deleteOrder}><i className="glyphicon glyphicon-remove" /></a>
+            </td>
         </tr>
     );
 };
