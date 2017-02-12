@@ -2,6 +2,10 @@
   padding: 10px 0;
 }
 
+.error {
+  color: red;
+}
+
 .form-group {
   label {
     margin: auto 5px;
@@ -10,4 +14,10 @@
   button {
     margin-left: 10px;
   }
+}
+
+.orderForm {
+  padding: 20px 10px;
+  background: #dedede;
+  overflow: hidden;
 }

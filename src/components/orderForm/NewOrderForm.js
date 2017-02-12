@@ -4,8 +4,9 @@ import SaveButton from './../common/SaveButton';
 
 const NewOrderForm = ({users, order, onSave, onChange, errors}) => {
     return (
-        <div>
-            <h4>New order</h4>
+        <div className="orderForm">
+            <h4 className="text-center">New order</h4>
+            
             <form className="form-inline vertical-padded" role="form">
                 <SelectInput 
                     name="userId"
@@ -20,7 +21,7 @@ const NewOrderForm = ({users, order, onSave, onChange, errors}) => {
                         className="form-control" 
                         type="number"
                         value={order.quantity}
-                        onChange={onChange} />
+                        onChange={onChange} />                    
                 </div>
                 <div className="form-group">
                     <label htmlFor="inputPrice" className="control-label"> Price</label>
@@ -38,6 +39,14 @@ const NewOrderForm = ({users, order, onSave, onChange, errors}) => {
                     <SaveButton save={onSave} value="Sell" />
                 </div>
             </form>
+            <div className="col-xs-12">
+                {errors.userId && 
+                    <div className="error"><i className="glyphicon glyphicon-alert" /> {errors.userId}</div>}
+                {errors.quantity && 
+                    <div className="error"><i className="glyphicon glyphicon-alert" /> {errors.quantity}</div>}
+                {errors.price && 
+                    <div className="error"><i className="glyphicon glyphicon-alert" /> {errors.price}</div>}
+            </div>
         </div>
     );
 };

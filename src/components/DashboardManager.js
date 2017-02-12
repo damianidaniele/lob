@@ -25,7 +25,25 @@ class DashboardManager extends React.Component {
     }
 
     orderFormIsValid() {
-        return true;
+        let formIsValid = true;
+        let errors = {};
+        if (this.state.order.quantity <= 0) {
+            formIsValid = false;
+            errors.quantity = 'Please select a quantity value higher than 0';
+        }
+
+        if (this.state.order.price <= 0) {
+            formIsValid = false;
+            errors.price = 'Please select a price higher than 0';
+        }
+        
+        if (this.state.order.userId === '') {
+            formIsValid = false;
+            errors.userId = 'Please select an UserId';
+        }
+
+        this.setState({errors: errors});
+        return formIsValid;
     }
 
     saveOrder(event, orderAction) {
