@@ -1,28 +1,33 @@
 import React from 'react';
+import {groupOrders} from '../utils/utils';
+import OrderSummaryRow from './OrderSummaryRow';
 
-const OrderSummary = () => {
+const OrderSummary = ({orders, filterBy}) => {
+    const getOrderType = () => {return filterBy.split(':')[0]};
+    const getOrderSort = () => {return filterBy.split(':')[1]}
+    
+    const getFilteredOrders = () => {
+      return groupOrders(orders, getOrderType(), getOrderSort());
+    };
+
     return (
+      <div>
+        <h4>Total {getOrderType()} orders</h4>
         <table className="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Quantity</th>
             <th>Price</th>
-            <th>Order Id</th>
+            <th>Orders</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>50KG</td>
-            <td>£400.56</td>
-            <td>123 - 456</td>
-          </tr>
-          <tr>
-            <td>10KG</td>
-            <td>£378.56</td>
-            <td>478</td>
-          </tr>
+          {getFilteredOrders().map(order => {
+            return (<OrderSummaryRow key={order.price} order={order} />)
+          })}
         </tbody>
       </table>
+    </div>
     );
 };
 

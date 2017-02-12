@@ -68,12 +68,8 @@ class DashboardManager extends React.Component {
 
                 <h4>Active orders</h4>
                 <ActiveOrders orders={this.props.orders} deleteOrder={this.deleteOrder} ></ActiveOrders>
-
-                <h4>Total Sell Orders</h4>
-                <OrderSummary></OrderSummary>
-                
-                <h4>Total Buy Orders</h4>
-                <OrderSummary></OrderSummary>
+                <OrderSummary orders={this.props.orders} filterBy="sell:asc"></OrderSummary>
+                <OrderSummary orders={this.props.orders} filterBy="buy:desc"></OrderSummary>
             </div>
         );
     }
