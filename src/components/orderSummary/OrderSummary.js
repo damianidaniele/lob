@@ -1,5 +1,5 @@
 import React from 'react';
-import {groupOrders} from '../utils/utils';
+import {groupOrders} from '../../utils/utils';
 import OrderSummaryRow from './OrderSummaryRow';
 
 const OrderSummary = ({orders, filterBy}) => {
