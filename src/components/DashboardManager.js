@@ -6,7 +6,7 @@ import * as orderActions from '../actions/orderActions';
 import {mapArrayToObject} from '../utils/utils';
 
 import NewOrderForm from './orderForm/NewOrderForm';
-import ActiveOrders from './activeorders/ActiveOrders';
+import ActiveOrders from './activeOrders/ActiveOrders';
 import OrderSummary from './orderSummary/OrderSummary';
 
 class DashboardManager extends React.Component {
@@ -55,19 +55,16 @@ class DashboardManager extends React.Component {
 
     render() {
         return (
-            <div className="col-xs-12">
-                <h1 className="text-center">Live Order Board</h1>
+            <div>
                 <NewOrderForm 
                     users={this.state.users}
                     order={this.state.order}
                     errors={this.state.errors}
                     onChange={this.onChange}
                     onSave={this.saveOrder} />
-
-                <h4>Active orders</h4>
-                <ActiveOrders orders={this.props.orders} deleteOrder={this.deleteOrder} ></ActiveOrders>
-                <OrderSummary orders={this.props.orders} filterBy="sell:asc"></OrderSummary>
-                <OrderSummary orders={this.props.orders} filterBy="buy:desc"></OrderSummary>
+                <ActiveOrders orders={this.props.orders} deleteOrder={this.deleteOrder} />
+                <OrderSummary orders={this.props.orders} filterBy="sell:asc" />
+                <OrderSummary orders={this.props.orders} filterBy="buy:desc" />
             </div>
         );
     }
@@ -80,7 +77,7 @@ DashboardManager.propTypes = {
     nextOrderId: PropTypes.number
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     return {
         users: state.users,
         orders: state.orders,
