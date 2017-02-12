@@ -6,7 +6,7 @@ import * as orderActions from '../actions/orderActions';
 import {mapArrayToObject} from '../utils/utils';
 
 import NewOrderForm from './NewOrderForm';
-import ActiveOrders from './ActiveOrders';
+import ActiveOrders from './activeorders/ActiveOrders';
 import OrderSummary from './OrderSummary';
 
 class DashboardManager extends React.Component {
